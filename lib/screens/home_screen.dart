@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'profile_screen.dart';
+import 'assignment_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   @override
