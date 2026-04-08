@@ -53,3 +53,55 @@ class AssignmentCard extends StatelessWidget {
     );
   }
 }
+
+class StatCard extends StatelessWidget {
+  final String number;
+  final String label;
+  final Color color;
+
+  StatCard({
+    required this.number,
+    required this.label,
+    required this.color,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Expanded(
+      child: Container(
+        padding: EdgeInsets.symmetric(vertical: 16),
+        decoration: BoxDecoration(
+          color: color.withOpacity(0.1),
+          borderRadius: BorderRadius.circular(12),
+        ),
+        child: Column(
+          children: [
+            Text(
+              number,
+              style: TextStyle(
+                fontSize: 28,
+                fontWeight: FontWeight.bold,
+                color: color,
+              ),
+            ),
+            SizedBox(height: 4),
+            Text(
+              label,
+              style: TextStyle(color: Colors.grey),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class Responsive {
+  static double width(BuildContext context, double percentage) {
+    return MediaQuery.of(context).size.width * percentage;
+  }
+
+  static double height(BuildContext context, double percentage) {
+    return MediaQuery.of(context).size.height * percentage;
+  }
+}

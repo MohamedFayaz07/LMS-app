@@ -10,6 +10,9 @@ class AssignmentScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    int pending = assignments.where((a) => a["status"] == "Pending").length;
+    int submitted = assignments.where((a) => a["status"] == "Submitted").length;
+
     return Scaffold(
       appBar: AppBar(title: Text("Assignments")),
       body: Padding(
@@ -17,8 +20,19 @@ class AssignmentScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            // Using same StatCard widget
+            Row(
+              children: [
+                StatCard(number: "$pending", label: "Pending", color: Colors.orange),
+                SizedBox(width: 16),
+                StatCard(number: "$submitted", label: "Submitted", color: Colors.green),
+              ],
+            ),
+            SizedBox(height: 20),
+
             SectionHeader("Your Assignments"),
             SizedBox(height: 10),
+
             Expanded(
               child: ListView.builder(
                 itemCount: assignments.length,
@@ -29,7 +43,7 @@ class AssignmentScreen extends StatelessWidget {
                   );
                 },
               ),
-            )
+            ),
           ],
         ),
       ),

@@ -1,87 +1,58 @@
 import 'package:flutter/material.dart';
-import 'profile_screen.dart';
-import 'assignment_screen.dart';
+import 'reusable_widgets.dart';
 
 class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text("Dashboard"),
-      ),
+      appBar: AppBar(title: Text("Dashboard")),
       body: Padding(
-        padding: const EdgeInsets.all(20.0),
+        padding: EdgeInsets.all(20),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text("Hello Fayaz 👋",
-                style: TextStyle(fontSize: 26, fontWeight: FontWeight.bold)),
-
+            Text("Hello Fayaz 👋", style: TextStyle(fontSize: 26, fontWeight: FontWeight.bold)),
             SizedBox(height: 10),
-            Text("Your Progress", style: TextStyle(fontSize: 18)),
-
+            SectionHeader("Your Progress"),
             SizedBox(height: 20),
 
-            // Progress Cards
+            // Using reusable StatCard
             Row(
               children: [
-                Expanded(
-                  child: Container(
-                    padding: EdgeInsets.all(20),
-                    decoration: BoxDecoration(
-                      color: Colors.blue.shade100,
-                      borderRadius: BorderRadius.circular(12),
-                    ),
-                    child: Column(
-                      children: [
-                        Text("8", style: TextStyle(fontSize: 32)),
-                        Text("Courses"),
-                      ],
-                    ),
-                  ),
-                ),
-                SizedBox(width: 20),
-                Expanded(
-                  child: Container(
-                    padding: EdgeInsets.all(20),
-                    decoration: BoxDecoration(
-                      color: Colors.green.shade100,
-                      borderRadius: BorderRadius.circular(12),
-                    ),
-                    child: Column(
-                      children: [
-                        Text("4", style: TextStyle(fontSize: 32)),
-                        Text("Completed"),
-                      ],
-                    ),
-                  ),
-                ),
+                StatCard(number: "8", label: "Courses", color: Colors.blue),
+                SizedBox(width: 16),
+                StatCard(number: "4", label: "Completed", color: Colors.green),
               ],
             ),
 
             SizedBox(height: 30),
-
-            Text("Continue Learning",
-                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
-
+            SectionHeader("Continue Learning"),
             SizedBox(height: 10),
 
             Expanded(
               child: ListView(
                 children: [
-                  ListTile(
-                    leading: Icon(Icons.book),
-                    title: Text("Flutter Basics"),
-                    subtitle: Text("40% completed"),
-                  ),
-                  ListTile(
-                    leading: Icon(Icons.book),
-                    title: Text("UI/UX Design"),
-                    subtitle: Text("20% completed"),
-                  ),
+                  _courseTile("Flutter Basics", 0.4),
+                  _courseTile("UI/UX Design", 0.2),
                 ],
               ),
-            )
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _courseTile(String title, double progress) {
+    return Card(
+      child: ListTile(
+        leading: Icon(Icons.play_circle_filled, color: Colors.blue),
+        title: Text(title),
+        subtitle: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text("${(progress * 100).toInt()}% completed"),
+            LinearProgressIndicator(value: progress),
           ],
         ),
       ),

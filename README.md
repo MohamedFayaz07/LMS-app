@@ -1,16 +1,41 @@
-# lms_app
+# Flutter LMS Mini Project
 
-A new Flutter LMS mobile project
+A simple Learning Management System (LMS) built in Flutter for a 7-day series project.
 
-## Getting Started
+## Features
+- Splash & Onboarding Screen
+- Login Screen
+- Course List
+- Course Detail & Lessons
+- Assignments (Pending / Submitted)
+- User Profile
+- Reusable Widgets
+- Bottom Navigation
+- State Management (setState)
+- Basic Animations
+- Responsive UI
 
-This project is a starting point for a Flutter application.
+## Tech Stack
+- Flutter SDK
+- Dart
+- Material 3
 
-A few resources to get you started if this is your first Flutter project:
+## Folder Structure
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+lib/
+├── main.dart
+├── screens/
+   ├── splash_screen.dart
+   ├── onboarding_screen.dart
+   ├── login_screen.dart
+   ├── navigation_screen.dart
+   ├── home_screen.dart
+   ├── course_list_screen.dart
+   ├── course_detail_screen.dart
+   ├── lesson_screen.dart
+   ├── assignment_screen.dart
+   |── profile_screen.dart
+   └── reusable_widgets.dart
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Author
+-M.M.M.Fayaz

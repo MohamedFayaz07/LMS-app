@@ -16,22 +16,18 @@ class _LessonScreenState extends State<LessonScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.grey[100],
-      appBar: AppBar(
-        title: Text(widget.lessonTitle),
-        elevation: 1,
-      ),
+      appBar: AppBar(title: Text(widget.lessonTitle), elevation: 1),
       body: SingleChildScrollView(
         padding: EdgeInsets.all(16),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-
             // Video Placeholder with smooth animation
             AnimatedOpacity(
               opacity: isCompleted ? 0.6 : 1.0,
               duration: Duration(milliseconds: 400),
               child: AnimatedScale(
-                scale: isCompleted ? 0.9 : 1.0,
+                scale: isCompleted ? 0.7 : 1.0,
                 duration: Duration(milliseconds: 400),
                 child: Container(
                   height: 200,
@@ -45,7 +41,7 @@ class _LessonScreenState extends State<LessonScreen> {
                         color: Colors.black12,
                         blurRadius: 6,
                         offset: Offset(0, 3),
-                      )
+                      ),
                     ],
                   ),
                   child: Center(
@@ -64,17 +60,14 @@ class _LessonScreenState extends State<LessonScreen> {
             // Title
             Text(
               widget.lessonTitle,
-              style: TextStyle(
-                fontSize: 22,
-                fontWeight: FontWeight.bold,
-              ),
+              style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
             ),
 
             SizedBox(height: 10),
 
             Text(
               "This lesson covers the basics related to: ${widget.lessonTitle}. "
-                  "Watch the video above and mark as complete once done.",
+              "Watch the video above and mark as complete once done.",
               style: TextStyle(fontSize: 15, color: Colors.black87),
             ),
 
